@@ -15,14 +15,15 @@ function handleRequests(req,res){
             var parsedData = queryString.parse(store);
             res.writeHead(201,{"Content-Type":"text/html"});
             res.end(`<h2>Name: ${parsedData.name}</h2> <h3>Email: ${parsedData.email}</h3> <p>Age: ${parsedData.age}</p>`)
-        }else if(req.method === "GET" && parsedUrl.pathname === "/form"){
-            res.writeHead(201,{"Content-Type":"text/html"});
-            fs.createReadStream("./form.html").pipe(res)
-        }else if( req.url.split(".").pop() === "css" ){
-            res.setHeader("Content-Type","text/css");
-            fs.createReadStream( `.${req.url}`).pipe(res)
         }
     })
+    if(req.method === "GET" && parsedUrl.pathname === "/form"){
+        res.writeHead(201,{"Content-Type":"text/html"});
+        fs.createReadStream("./form.html").pipe(res)
+    }else if( req.url.split(".").pop() === "css" ){
+        res.setHeader("Content-Type","text/css");
+        fs.createReadStream( `.${req.url}`).pipe(res)
+    }
     
 }
 
