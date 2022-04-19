@@ -1,0 +1,14 @@
+header {
+    color: aqua;
+    font-size: 48px;
+    margin: 24px;
+    font-weight: 550;
+}
+div {
+    height: 156px;
+    width: 156px;
+}
+img {
+    object-fit: cover;
+    width: 100%;
+}
